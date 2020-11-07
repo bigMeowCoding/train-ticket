@@ -1,28 +1,35 @@
-import React, { useCallback, useEffect } from "react";
-import logo from "../logo.svg";
+import React, { FC, useCallback } from "react";
 import "./App.css";
-import { connect } from "react-redux";
-import { Simulate } from "react-dom/test-utils";
+import { connect, shallowEqual, useDispatch, useSelector } from "react-redux";
 import Header from "../common/components/header/header";
 import Journey from "./components/journey/journey";
+import { exchangeFromTo } from "./redux/action";
+import { TicketState } from "../common/interface/redux";
 
-function App(props: any) {
-  const { from, to } = props;
+const App: FC = () => {
   const onBack = useCallback(() => {
     window.history.back();
+  }, []);
+
+  const { from, to } = useSelector(
+    (state: TicketState) => ({
+      from: state.from,
+      to: state.to,
+    }),
+    shallowEqual
+  );
+  const dispatch = useDispatch();
+
+  const changeFromTo = useCallback(() => {
+    dispatch(exchangeFromTo());
   }, []);
 
   return (
     <div>
       <Header onBack={onBack} title={"火车站"} />
-      <Journey from={from} to={to} />
+      <Journey from={from} to={to} exchangeFromTo={changeFromTo} />
     </div>
   );
-}
+};
 
-export default connect(
-  function mapStateToProps(state) {
-    return state;
-  },
-    {}
-)(App);
+export default App;

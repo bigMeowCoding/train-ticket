@@ -1,11 +1,10 @@
-import React from "react";
+import React, { FC } from "react";
 import "./header.scss";
 
-export default function Header(props: {
+const Header: FC<{
   onBack: (event: any) => void;
   title: string;
-}) {
-  const { onBack, title } = props;
+}> = ({ onBack, title }) => {
   return (
     <div className="header">
       <div className="header-back" onClick={onBack}>
@@ -21,4 +20,5 @@ export default function Header(props: {
       <h1 className="header-title">{title}</h1>
     </div>
   );
-}
+};
+export default Header;
