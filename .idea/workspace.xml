@@ -1,12 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="4aa517d1-e2ae-47bc-b080-34a9d22cf22a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/setupProxy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/components/header/header.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/components/header/header.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/interface/redux.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index/components/journey/journey.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index/components/journey/journey.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index/imgs/switch.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index/redux/action.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index/redux/actionTypes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index/redux/reducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index/redux/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index/reducers.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index/store.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/setupProxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/setupProxy.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,7 +49,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -36,7 +70,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/index" />
+    <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -55,15 +90,16 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/index" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/index" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.start">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -112,7 +148,8 @@
       <updated>1604590527872</updated>
       <workItem from="1604590528900" duration="162000" />
       <workItem from="1604590739211" duration="1465000" />
-      <workItem from="1604667186988" duration="6168000" />
+      <workItem from="1604667186988" duration="6562000" />
+      <workItem from="1604753366542" duration="3549000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1604591493675</created>
@@ -128,50 +165,74 @@
       <option name="project" value="LOCAL" />
       <updated>1604671783298</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="proxy config">
+      <created>1604674627893</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1604674627893</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
     <MESSAGE value="init pwa 配置" />
-    <option name="LAST_COMMIT_MESSAGE" value="init pwa 配置" />
+    <MESSAGE value="proxy config" />
+    <option name="LAST_COMMIT_MESSAGE" value="proxy config" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2255" y="95" key="CommitChangelistDialog2" timestamp="1604671783067">
+    <state x="2255" y="95" key="CommitChangelistDialog2" timestamp="1604674627727">
       <screen x="1680" y="23" width="1920" height="973" />
     </state>
-    <state x="2255" y="95" key="CommitChangelistDialog2/1680.23.1920.973/0.23.1680.1027@1680.23.1920.973" timestamp="1604671783067" />
+    <state x="2255" y="95" key="CommitChangelistDialog2/1680.23.1920.973/0.23.1680.1027@1680.23.1920.973" timestamp="1604674627727" />
     <state x="2255" y="95" key="CommitChangelistDialog2/1680.23.1920.975/0.23.1680.1027@1680.23.1920.975" timestamp="1604591493566" />
-    <state width="1291" height="250" key="GridCell.Tab.0.bottom" timestamp="1604674187083">
-      <screen x="1680" y="23" width="1920" height="973" />
+    <state width="1291" height="175" key="GridCell.Tab.0.bottom" timestamp="1604757689599">
+      <screen x="1680" y="23" width="1920" height="1057" />
     </state>
     <state width="1291" height="276" key="GridCell.Tab.0.bottom/-2560.-56.2560.1332/0.23.1680.1027@-2560.-56.2560.1332" timestamp="1604627228893" />
+    <state width="1291" height="175" key="GridCell.Tab.0.bottom/1680.23.1920.1057/0.23.1680.952@1680.23.1920.1057" timestamp="1604757689599" />
     <state width="1291" height="144" key="GridCell.Tab.0.bottom/1680.23.1920.973/0.23.1680.1027@0.23.1680.1027" timestamp="1604669142649" />
-    <state width="1291" height="250" key="GridCell.Tab.0.bottom/1680.23.1920.973/0.23.1680.1027@1680.23.1920.973" timestamp="1604674187083" />
+    <state width="1291" height="250" key="GridCell.Tab.0.bottom/1680.23.1920.973/0.23.1680.1027@1680.23.1920.973" timestamp="1604674823976" />
     <state width="1603" height="257" key="GridCell.Tab.0.bottom/1680.23.1920.975/0.23.1680.1027@1680.23.1920.975" timestamp="1604591498713" />
-    <state width="1291" height="250" key="GridCell.Tab.0.center" timestamp="1604674187082">
-      <screen x="1680" y="23" width="1920" height="973" />
+    <state width="1291" height="175" key="GridCell.Tab.0.center" timestamp="1604757689597">
+      <screen x="1680" y="23" width="1920" height="1057" />
     </state>
     <state width="1291" height="276" key="GridCell.Tab.0.center/-2560.-56.2560.1332/0.23.1680.1027@-2560.-56.2560.1332" timestamp="1604627228892" />
+    <state width="1291" height="175" key="GridCell.Tab.0.center/1680.23.1920.1057/0.23.1680.952@1680.23.1920.1057" timestamp="1604757689597" />
     <state width="1291" height="144" key="GridCell.Tab.0.center/1680.23.1920.973/0.23.1680.1027@0.23.1680.1027" timestamp="1604669142648" />
-    <state width="1291" height="250" key="GridCell.Tab.0.center/1680.23.1920.973/0.23.1680.1027@1680.23.1920.973" timestamp="1604674187082" />
+    <state width="1291" height="250" key="GridCell.Tab.0.center/1680.23.1920.973/0.23.1680.1027@1680.23.1920.973" timestamp="1604674823975" />
     <state width="1603" height="257" key="GridCell.Tab.0.center/1680.23.1920.975/0.23.1680.1027@1680.23.1920.975" timestamp="1604591498712" />
-    <state width="1291" height="250" key="GridCell.Tab.0.left" timestamp="1604674187082">
-      <screen x="1680" y="23" width="1920" height="973" />
+    <state width="1291" height="175" key="GridCell.Tab.0.left" timestamp="1604757689597">
+      <screen x="1680" y="23" width="1920" height="1057" />
     </state>
     <state width="1291" height="276" key="GridCell.Tab.0.left/-2560.-56.2560.1332/0.23.1680.1027@-2560.-56.2560.1332" timestamp="1604627228891" />
+    <state width="1291" height="175" key="GridCell.Tab.0.left/1680.23.1920.1057/0.23.1680.952@1680.23.1920.1057" timestamp="1604757689597" />
     <state width="1291" height="144" key="GridCell.Tab.0.left/1680.23.1920.973/0.23.1680.1027@0.23.1680.1027" timestamp="1604669142647" />
-    <state width="1291" height="250" key="GridCell.Tab.0.left/1680.23.1920.973/0.23.1680.1027@1680.23.1920.973" timestamp="1604674187082" />
+    <state width="1291" height="250" key="GridCell.Tab.0.left/1680.23.1920.973/0.23.1680.1027@1680.23.1920.973" timestamp="1604674823974" />
     <state width="1603" height="257" key="GridCell.Tab.0.left/1680.23.1920.975/0.23.1680.1027@1680.23.1920.975" timestamp="1604591498712" />
-    <state width="1291" height="250" key="GridCell.Tab.0.right" timestamp="1604674187082">
-      <screen x="1680" y="23" width="1920" height="973" />
+    <state width="1291" height="175" key="GridCell.Tab.0.right" timestamp="1604757689598">
+      <screen x="1680" y="23" width="1920" height="1057" />
     </state>
     <state width="1291" height="276" key="GridCell.Tab.0.right/-2560.-56.2560.1332/0.23.1680.1027@-2560.-56.2560.1332" timestamp="1604627228892" />
+    <state width="1291" height="175" key="GridCell.Tab.0.right/1680.23.1920.1057/0.23.1680.952@1680.23.1920.1057" timestamp="1604757689598" />
     <state width="1291" height="144" key="GridCell.Tab.0.right/1680.23.1920.973/0.23.1680.1027@0.23.1680.1027" timestamp="1604669142648" />
-    <state width="1291" height="250" key="GridCell.Tab.0.right/1680.23.1920.973/0.23.1680.1027@1680.23.1920.973" timestamp="1604674187082" />
+    <state width="1291" height="250" key="GridCell.Tab.0.right/1680.23.1920.973/0.23.1680.1027@1680.23.1920.973" timestamp="1604674823976" />
     <state width="1603" height="257" key="GridCell.Tab.0.right/1680.23.1920.975/0.23.1680.1027@1680.23.1920.975" timestamp="1604591498713" />
     <state x="2437" y="210" key="RollbackChangesDialog" timestamp="1604591472025">
       <screen x="1680" y="23" width="1920" height="975" />
@@ -181,9 +242,10 @@
       <screen x="1680" y="23" width="1920" height="973" />
     </state>
     <state x="1991" y="220" key="SettingsEditor/1680.23.1920.973/0.23.1680.1027@1680.23.1920.973" timestamp="1604673737245" />
-    <state width="500" height="445" key="SwitcherDM" timestamp="1604674094133">
-      <screen x="1680" y="23" width="1920" height="973" />
+    <state width="500" height="484" key="SwitcherDM" timestamp="1604757628468">
+      <screen x="1680" y="23" width="1920" height="1057" />
     </state>
+    <state width="500" height="484" key="SwitcherDM/1680.23.1920.1057/0.23.1680.952@1680.23.1920.1057" timestamp="1604757628468" />
     <state width="500" height="445" key="SwitcherDM/1680.23.1920.973/0.23.1680.1027@1680.23.1920.973" timestamp="1604674094133" />
   </component>
 </project>
