@@ -3,6 +3,7 @@ import {
   ACTION_SET_CURRENT_SELECTING_LEFT_CITY,
   ACTION_SET_FROM,
   ACTION_SET_IS_CITY_SELECTOR_VISIBLE,
+  ACTION_SET_IS_DATE_SELECTOR_VISIBLE,
   ACTION_SET_IS_LOADING_CITY_DATA,
   ACTION_SET_TO,
 } from "./actionTypes";
@@ -100,5 +101,19 @@ export function setSelectedCity(city: string) {
       dispatch(setTo(city));
     }
     dispatch(hideCitySelector());
+  };
+}
+
+export function showDateSelector() {
+  return {
+    type: ACTION_SET_IS_DATE_SELECTOR_VISIBLE,
+    payload: true,
+  };
+}
+
+export function hideDateSelector() {
+  return {
+    type: ACTION_SET_IS_DATE_SELECTOR_VISIBLE,
+    payload: false,
   };
 }

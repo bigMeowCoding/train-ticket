@@ -3,7 +3,7 @@ import {
   ACTION_SET_CURRENT_SELECTING_LEFT_CITY,
   ACTION_SET_DEPART_DATE,
   ACTION_SET_FROM,
-  ACTION_SET_IS_CITY_SELECTOR_VISIBLE,
+  ACTION_SET_IS_CITY_SELECTOR_VISIBLE, ACTION_SET_IS_DATE_SELECTOR_VISIBLE,
   ACTION_SET_IS_LOADING_CITY_DATA,
   ACTION_SET_TO,
 } from "./actionTypes";
@@ -72,4 +72,15 @@ export default {
 
     return state;
   },
+   isDateSelectorVisible(state = false, action: Action) {
+    const { type, payload } = action;
+    switch (type) {
+      case ACTION_SET_IS_DATE_SELECTOR_VISIBLE:
+        return payload;
+      default:
+    }
+
+    return state;
+  }
+
 };

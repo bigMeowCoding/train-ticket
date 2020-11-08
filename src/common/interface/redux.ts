@@ -12,4 +12,5 @@ export type TicketState = {
   cityData: HttpReturnCityData;
   isLoadingCityData: boolean;
   departDate: number;
+  isDateSelectorVisible: boolean;
 };

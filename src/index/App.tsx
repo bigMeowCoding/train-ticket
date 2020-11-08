@@ -7,6 +7,7 @@ import { exchangeFromTo } from "./redux/action";
 import { TicketState } from "../common/interface/redux";
 import CitySelector from "../common/components/city-selector/city-selector";
 import DepartDate from "./components/depart-date/depart-date";
+import DateSelector from "../common/components/date-selector/date-selector";
 
 const App: FC = () => {
   const onBack = useCallback(() => {
@@ -33,6 +34,7 @@ const App: FC = () => {
       <Journey from={from} to={to} exchangeFromTo={changeFromTo} />
       <CitySelector onBack={onBack} />
       <DepartDate />
+      <DateSelector onBack={onBack} />
     </div>
   );
 };

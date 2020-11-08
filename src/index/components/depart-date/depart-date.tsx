@@ -2,9 +2,10 @@ import dayjs from "dayjs";
 import "./depart-date.scss";
 import { FC, useMemo } from "react";
 import React from "react";
-import { shallowEqual, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { TicketState } from "../../../common/interface/redux";
 import removeDateTimes from "../../../common/utils/remove-date-times";
+import { showDateSelector } from "../../redux/action";
 const DepartDate: FC = function () {
   const { time } = useSelector(
     (state: TicketState) => ({
@@ -12,7 +13,7 @@ const DepartDate: FC = function () {
     }),
     shallowEqual
   );
-
+  const dispatch = useDispatch();
   const departDateRemoveTimes = removeDateTimes(time);
   const departDateString = useMemo(() => {
     return dayjs(departDateRemoveTimes).format("YYYY-MM-DD");
@@ -26,7 +27,12 @@ const DepartDate: FC = function () {
     (isToday ? "(今天)" : "");
 
   return (
-    <div className="depart-date" onClick={() => {}}>
+    <div
+      className="depart-date"
+      onClick={() => {
+        dispatch(showDateSelector());
+      }}
+    >
       <input type="hidden" name="date" value={departDateString} />
       {departDateString} <span className="depart-week">{weekString}</span>
     </div>
