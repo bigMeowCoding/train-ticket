@@ -1,10 +1,11 @@
 import "./city-selector.scss";
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useMemo, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { TicketState } from "../../interface/redux";
 import classnames from "classnames";
 import { fetchCityData, hideCitySelector } from "../../../index/redux/action";
 import CityList from "./city-list";
+import Suggest from "./suggest";
 
 const CitySelector: FC<{ onBack: () => void }> = function ({ onBack }) {
   const { isCitySelectorVisible, isLoadingCityData, cityData } = useSelector(
@@ -20,6 +21,9 @@ const CitySelector: FC<{ onBack: () => void }> = function ({ onBack }) {
   const dispatch = useDispatch();
   const [searchKey, setSearchKey] = useState("");
 
+  const key = useMemo(() => {
+    return searchKey.trim();
+  }, [searchKey]);
   useEffect(() => {
     if (isCitySelectorVisible && !isLoadingCityData && !cityData) {
       dispatch(fetchCityData());
@@ -88,6 +92,7 @@ const CitySelector: FC<{ onBack: () => void }> = function ({ onBack }) {
           &#xf063;
         </i>
       </div>
+      {Boolean(key) && <Suggest searchKey={key} />}
       {outputCitySections()}
     </div>
   );

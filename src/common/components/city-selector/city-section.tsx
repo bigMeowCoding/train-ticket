@@ -6,7 +6,6 @@ const CitySection: FC<{ title: string; cities: City[] }> = function ({
   title,
   cities,
 }) {
-  console.log(cities);
   return (
     <ul className="city-ul" data-cate={title}>
       <li className="city-li" key="title">

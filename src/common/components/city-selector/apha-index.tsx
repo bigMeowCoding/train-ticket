@@ -1,8 +1,8 @@
-import React, { FC, useCallback } from "react";
+import React, {FC, memo, useCallback} from "react";
 
 const AlphaIndex: FC<{
   alpha: string;
-}> = function ({ alpha }) {
+}> = memo(function ({ alpha }) {
   return (
     <i
       className="city-index-item"
@@ -13,5 +13,5 @@ const AlphaIndex: FC<{
       {alpha}
     </i>
   );
-};
+});
 export default AlphaIndex;

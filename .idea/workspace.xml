@@ -20,8 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4aa517d1-e2ae-47bc-b080-34a9d22cf22a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/common/components/city-selector/apha-index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/components/city-selector/city-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/components/city-selector/city-list.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/components/city-selector/suggest-item.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/components/city-selector/suggest.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/components/city-selector/apha-index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/components/city-selector/apha-index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/components/city-selector/city-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/components/city-selector/city-section.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/components/city-selector/city-selector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/components/city-selector/city-selector.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604839144418</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="快速索引开发完毕">
+      <created>1604841951609</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1604841951609</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,15 +219,16 @@
     <MESSAGE value="城市选择浮层 搜索栏" />
     <MESSAGE value="获取城市 action" />
     <MESSAGE value="渲染城市列表" />
-    <option name="LAST_COMMIT_MESSAGE" value="渲染城市列表" />
+    <MESSAGE value="快速索引开发完毕" />
+    <option name="LAST_COMMIT_MESSAGE" value="快速索引开发完毕" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2255" y="101" key="CommitChangelistDialog2" timestamp="1604839144286">
+    <state x="2255" y="101" key="CommitChangelistDialog2" timestamp="1604841951483">
       <screen x="1680" y="23" width="1920" height="1057" />
     </state>
     <state x="2255" y="101" key="CommitChangelistDialog2/1680.23.1920.1057/0.23.1680.952@1680.23.1920.1057" timestamp="1604763155901" />
     <state x="2255" y="101" key="CommitChangelistDialog2/1680.23.1920.1057/0.23.1680.956@1680.23.1920.1057" timestamp="1604817725476" />
-    <state x="2255" y="101" key="CommitChangelistDialog2/1680.23.1920.1057/0.23.1680.958@1680.23.1920.1057" timestamp="1604839144286" />
+    <state x="2255" y="101" key="CommitChangelistDialog2/1680.23.1920.1057/0.23.1680.958@1680.23.1920.1057" timestamp="1604841951483" />
     <state x="2255" y="95" key="CommitChangelistDialog2/1680.23.1920.973/0.23.1680.1027@1680.23.1920.973" timestamp="1604674627727" />
     <state x="2255" y="95" key="CommitChangelistDialog2/1680.23.1920.975/0.23.1680.1027@1680.23.1920.975" timestamp="1604591493566" />
     <state width="1381" height="224" key="GridCell.Tab.0.bottom" timestamp="1604817696354">
@@ -270,16 +282,17 @@
     <state width="500" height="484" key="SwitcherDM/1680.23.1920.1057/0.23.1680.956@1680.23.1920.1057" timestamp="1604816475247" />
     <state width="500" height="484" key="SwitcherDM/1680.23.1920.1057/0.23.1680.958@1680.23.1920.1057" timestamp="1604838416779" />
     <state width="500" height="445" key="SwitcherDM/1680.23.1920.973/0.23.1680.1027@1680.23.1920.973" timestamp="1604674094133" />
-    <state x="2122" y="245" key="Vcs.Push.Dialog.v2" timestamp="1604839145799">
+    <state x="2122" y="245" key="Vcs.Push.Dialog.v2" timestamp="1604841953275">
       <screen x="1680" y="23" width="1920" height="1057" />
     </state>
     <state x="2122" y="245" key="Vcs.Push.Dialog.v2/1680.23.1920.1057/0.23.1680.952@1680.23.1920.1057" timestamp="1604763157862" />
     <state x="2122" y="245" key="Vcs.Push.Dialog.v2/1680.23.1920.1057/0.23.1680.956@1680.23.1920.1057" timestamp="1604817727864" />
-    <state x="2122" y="245" key="Vcs.Push.Dialog.v2/1680.23.1920.1057/0.23.1680.958@1680.23.1920.1057" timestamp="1604839145799" />
-    <state x="2544" y="478" width="586" height="490" key="find.popup" timestamp="1604817614974">
+    <state x="2122" y="245" key="Vcs.Push.Dialog.v2/1680.23.1920.1057/0.23.1680.958@1680.23.1920.1057" timestamp="1604841953275" />
+    <state x="2544" y="478" width="586" height="490" key="find.popup" timestamp="1604844784185">
       <screen x="1680" y="23" width="1920" height="1057" />
     </state>
     <state x="2544" y="478" width="586" height="490" key="find.popup/1680.23.1920.1057/0.23.1680.956@1680.23.1920.1057" timestamp="1604817614974" />
+    <state x="2544" y="478" width="586" height="490" key="find.popup/1680.23.1920.1057/0.23.1680.958@1680.23.1920.1057" timestamp="1604844784185" />
     <state x="2583" y="245" width="670" height="676" key="search.everywhere.popup" timestamp="1604835730001">
       <screen x="1680" y="23" width="1920" height="1057" />
     </state>
