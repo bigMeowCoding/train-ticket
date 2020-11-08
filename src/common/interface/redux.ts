@@ -6,4 +6,5 @@ export type TicketState = {
   from: string;
   to: string;
   exchangeFromTo: () => void;
+  isCitySelectorVisible:boolean
 };
