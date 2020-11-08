@@ -1,20 +1,28 @@
 import "./city-selector.scss";
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { TicketState } from "../../interface/redux";
 import classnames from "classnames";
-import { hideCitySelector } from "../../../index/redux/action";
+import { fetchCityData, hideCitySelector } from "../../../index/redux/action";
 
 const CitySelector: FC<{ onBack: () => void }> = function ({ onBack }) {
-  const { isCitySelectorVisible } = useSelector(
-    (state: TicketState) => ({
-      isCitySelectorVisible: state.isCitySelectorVisible,
-    }),
+  const { isCitySelectorVisible, isLoadingCityData, cityData } = useSelector(
+    (state: TicketState) => {
+      return {
+        isCitySelectorVisible: state.isCitySelectorVisible,
+        cityData: state.cityData,
+        isLoadingCityData: state.isLoadingCityData,
+      };
+    },
     shallowEqual
   );
   const dispatch = useDispatch();
   const [searchKey, setSearchKey] = useState("");
-
+  useEffect(() => {
+    if (isCitySelectorVisible && !isLoadingCityData && !cityData) {
+      dispatch(fetchCityData());
+    }
+  }, [isCitySelectorVisible, isLoadingCityData, cityData]);
   function back() {
     dispatch(hideCitySelector());
   }

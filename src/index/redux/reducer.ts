@@ -1,7 +1,9 @@
 import {
+  ACTION_SET_CITY_DATA,
   ACTION_SET_CURRENT_SELECTING_LEFT_CITY,
   ACTION_SET_FROM,
   ACTION_SET_IS_CITY_SELECTOR_VISIBLE,
+  ACTION_SET_IS_LOADING_CITY_DATA,
   ACTION_SET_TO,
 } from "./actionTypes";
 import { Action } from "../../common/interface/redux";
@@ -42,6 +44,20 @@ export default {
       case ACTION_SET_CURRENT_SELECTING_LEFT_CITY:
         return payload;
       default:
+    }
+    return state;
+  },
+  isLoadingCityData(state = false, action: Action) {
+    switch (action.type) {
+      case ACTION_SET_IS_LOADING_CITY_DATA:
+        return action.payload;
+    }
+    return state;
+  },
+  cityData(state = null, action: Action) {
+    switch (action.type) {
+      case ACTION_SET_CITY_DATA:
+        return action.payload;
     }
     return state;
   },
