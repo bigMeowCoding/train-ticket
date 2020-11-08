@@ -6,11 +6,12 @@ import Journey from "./components/journey/journey";
 import { exchangeFromTo } from "./redux/action";
 import { TicketState } from "../common/interface/redux";
 import CitySelector from "../common/components/city-selector/city-selector";
+import DepartDate from "./components/depart-date/depart-date";
 
 const App: FC = () => {
   const onBack = useCallback(() => {
     window.history.back();
-      console.log('back')
+    console.log("back");
   }, []);
 
   const { from, to } = useSelector(
@@ -31,6 +32,7 @@ const App: FC = () => {
       <Header onBack={onBack} title={"火车站"} />
       <Journey from={from} to={to} exchangeFromTo={changeFromTo} />
       <CitySelector onBack={onBack} />
+      <DepartDate />
     </div>
   );
 };

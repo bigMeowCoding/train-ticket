@@ -3,7 +3,6 @@ import "./journey.scss";
 import switchImg from "../../imgs/switch.svg";
 import { useDispatch } from "react-redux";
 import { showCitySelector } from "../../redux/action";
-
 const Journey: FC<{
   from: string;
   to: string;
