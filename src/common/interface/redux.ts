@@ -1,4 +1,4 @@
-import { City } from "./city";
+import { City, HttpReturnCityData } from "./city";
 
 export type Action<T = any> = {
   type: string;
@@ -9,6 +9,6 @@ export type TicketState = {
   to: string;
   exchangeFromTo: () => void;
   isCitySelectorVisible: boolean;
-  cityData: City[];
+  cityData: HttpReturnCityData;
   isLoadingCityData: boolean;
 };

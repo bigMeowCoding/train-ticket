@@ -9,7 +9,7 @@ import {
 import { Action } from "../../common/interface/redux";
 import { Dispatch } from "redux";
 import { HttpReturn, HttpStatus } from "../../common/interface/http";
-import { City } from "../../common/interface/city";
+import { HttpReturnCityData } from "../../common/interface/city";
 
 export function setFrom(from: string): Action<string> {
   return {
@@ -60,12 +60,13 @@ export function setLoadingCityData(isLoading: boolean) {
   };
 }
 
-export function setCityData(cityData: City[]) {
+export function setCityData(cityData: HttpReturnCityData) {
   return {
     type: ACTION_SET_CITY_DATA,
     payload: cityData,
   };
 }
+
 export function fetchCityData() {
   return (dispatch: Dispatch, getState: any) => {
     const { isLoadingCityData } = getState();
@@ -77,7 +78,7 @@ export function fetchCityData() {
       .then((res) => {
         return res.json();
       })
-      .then((res: HttpReturn<City[]>) => {
+      .then((res: HttpReturn<HttpReturnCityData>) => {
         if (res.code === HttpStatus.ok) {
           dispatch(setCityData(res.data));
         }
@@ -86,5 +87,18 @@ export function fetchCityData() {
       .catch(() => {
         dispatch(setLoadingCityData(false));
       });
+  };
+}
+
+export function setSelectedCity(city: string) {
+  return (dispatch: Dispatch, getState: any) => {
+    const { currentSelectingLeftCity } = getState();
+
+    if (currentSelectingLeftCity) {
+      dispatch(setFrom(city));
+    } else {
+      dispatch(setTo(city));
+    }
+    dispatch(hideCitySelector());
   };
 }
