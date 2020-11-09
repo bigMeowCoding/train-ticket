@@ -9,6 +9,7 @@ import CitySelector from "../common/components/city-selector/city-selector";
 import DepartDate from "./components/depart-date/depart-date";
 import DateSelector from "../common/components/date-selector/date-selector";
 import HighSpeed from "../common/components/high-speed/high-speed";
+import Submit from "../common/components/submit/submit";
 
 const App: FC = () => {
   const onBack = useCallback(() => {
@@ -38,6 +39,7 @@ const App: FC = () => {
         <Journey from={from} to={to} exchangeFromTo={changeFromTo} />
         <DepartDate />
         <HighSpeed />
+        <Submit />
       </form>
 
       <CitySelector onBack={onBack} />
