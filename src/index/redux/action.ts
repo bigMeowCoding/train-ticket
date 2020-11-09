@@ -1,6 +1,7 @@
 import {
   ACTION_SET_CITY_DATA,
   ACTION_SET_CURRENT_SELECTING_LEFT_CITY,
+  ACTION_SET_DEPART_DATE,
   ACTION_SET_FROM,
   ACTION_SET_IS_CITY_SELECTOR_VISIBLE,
   ACTION_SET_IS_DATE_SELECTOR_VISIBLE,
@@ -60,7 +61,12 @@ export function setLoadingCityData(isLoading: boolean) {
     payload: isLoading,
   };
 }
-
+export function setDepartDate(departDate: number) {
+  return {
+    type: ACTION_SET_DEPART_DATE,
+    payload: departDate,
+  };
+}
 export function setCityData(cityData: HttpReturnCityData) {
   return {
     type: ACTION_SET_CITY_DATA,
