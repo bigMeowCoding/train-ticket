@@ -8,6 +8,7 @@ import { TicketState } from "../common/interface/redux";
 import CitySelector from "../common/components/city-selector/city-selector";
 import DepartDate from "./components/depart-date/depart-date";
 import DateSelector from "../common/components/date-selector/date-selector";
+import HighSpeed from "../common/components/high-speed/high-speed";
 
 const App: FC = () => {
   const onBack = useCallback(() => {
@@ -30,10 +31,17 @@ const App: FC = () => {
 
   return (
     <div>
-      <Header onBack={onBack} title={"火车站"} />
-      <Journey from={from} to={to} exchangeFromTo={changeFromTo} />
+      <div className="header-wrapper">
+        <Header onBack={onBack} title={"火车站"} />
+      </div>
+      <form action="./query.html" className="form">
+        <Journey from={from} to={to} exchangeFromTo={changeFromTo} />
+        <DepartDate />
+        <HighSpeed />
+      </form>
+
       <CitySelector onBack={onBack} />
-      <DepartDate />
+
       <DateSelector onBack={onBack} />
     </div>
   );
