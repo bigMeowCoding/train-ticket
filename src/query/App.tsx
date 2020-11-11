@@ -14,19 +14,29 @@ import dayjs from "dayjs";
 import { QueryState } from "../common/interface/redux";
 import Header from "../common/components/header/header";
 import Nav from "../common/components/nav/nav";
+import { setTrainList } from "../index/redux/action";
+import List from "./components/list/list";
 
 const App: FC = function () {
   const onBack = useCallback(() => {
     window.history.back();
   }, []);
   const dispatch = useDispatch();
-  const { from, to, departDate, searchParsed, highSpeed } = useSelector(
+  const {
+    from,
+    to,
+    departDate,
+    searchParsed,
+    highSpeed,
+    trainList,
+  } = useSelector(
     (state: QueryState) => ({
       from: state.from,
       to: state.to,
       departDate: state.departDate,
       searchParsed: state.searchParsed,
       highSpeed: state.highSpeed,
+      trainList: state.trainList,
     }),
     shallowEqual
   );
@@ -55,7 +65,17 @@ const App: FC = function () {
     fetch(url)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        const result = res.data;
+        const {
+          dataMap: {
+            directTrainInfo: {
+              trains,
+              filter: { ticketType, trainType, depStation, arrStation },
+            },
+          },
+        } = result;
+        console.log(trains);
+        dispatch(setTrainList(trains));
       });
   }, [searchParsed, from, to, departDate, highSpeed]);
 
@@ -64,6 +84,7 @@ const App: FC = function () {
       <div className="header-wrapper">
         <Header title={`${from} ⇀ ${to}`} onBack={onBack} />
         <Nav date={departDate} />
+        <List list={trainList} />
       </div>
     </div>
   );

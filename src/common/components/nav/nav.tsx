@@ -23,7 +23,6 @@ const Nav: FC<{ date: number }> = memo(function ({ date }) {
   );
   const next = useCallback(
     function () {
-        console.log('next')
       if (isNextDisabled) {
         return;
       }

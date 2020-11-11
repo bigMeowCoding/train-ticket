@@ -13,6 +13,7 @@ import { Action } from "../../common/interface/redux";
 import { Dispatch } from "redux";
 import { HttpReturn, HttpStatus } from "../../common/interface/http";
 import { HttpReturnCityData } from "../../common/interface/city";
+import {ACTION_SET_TRAIN_LIST} from "../../query/redux/actionTypes";
 
 export function setFrom(from: string): Action<string> {
   return {
@@ -35,7 +36,12 @@ export function exchangeFromTo() {
     dispatch(setTo(from));
   };
 }
-
+export function setTrainList(trainList:any[]) {
+  return {
+    type: ACTION_SET_TRAIN_LIST,
+    payload: trainList,
+  };
+}
 export function showCitySelector(selectingLeftCity: boolean) {
   return (dispatch: Dispatch) => {
     dispatch({

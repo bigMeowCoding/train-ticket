@@ -5,6 +5,7 @@ import {
   ACTION_SET_HIGH_SPEED,
   ACTION_SET_SEARCH_PARSED,
   ACTION_SET_TO,
+  ACTION_SET_TRAIN_LIST,
 } from "./actionTypes";
 import { Action } from "../../common/interface/redux";
 
@@ -54,6 +55,16 @@ export default {
 
     switch (type) {
       case ACTION_SET_HIGH_SPEED:
+        return payload;
+      default:
+    }
+
+    return state;
+  },
+  trainList(state = [], action: any) {
+    const { type, payload } = action;
+    switch (type) {
+      case ACTION_SET_TRAIN_LIST:
         return payload;
       default:
     }
