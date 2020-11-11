@@ -14,7 +14,6 @@ import Submit from "../common/components/submit/submit";
 const App: FC = () => {
   const onBack = useCallback(() => {
     window.history.back();
-    console.log("back");
   }, []);
 
   const { from, to } = useSelector(

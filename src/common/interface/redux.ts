@@ -15,3 +15,15 @@ export type TicketState = {
   isDateSelectorVisible: boolean;
   highSpeed: boolean;
 };
+export type QueryState = {
+  from: string;
+  to: string;
+  exchangeFromTo: () => void;
+  isCitySelectorVisible: boolean;
+  cityData: HttpReturnCityData;
+  isLoadingCityData: boolean;
+  departDate: number;
+  isDateSelectorVisible: boolean;
+  highSpeed: boolean;
+  searchParsed: boolean;
+};
