@@ -3,11 +3,15 @@ import "./App.css";
 import URI from "urijs";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import {
+  setArriveStations,
   setDepartDate,
+  setDepartStations,
   setFrom,
   setHighSpeed,
   setSearchParsed,
+  setTicketTypes,
   setTo,
+  setTrainTypes,
 } from "./redux/action";
 import removeDateTimes from "../common/utils/remove-date-times";
 import dayjs from "dayjs";
@@ -78,7 +82,12 @@ const App: FC = function () {
             },
           },
         } = result;
+
         dispatch(setTrainList(trains));
+        dispatch(setTicketTypes(ticketType));
+        dispatch(setTrainTypes(trainType));
+        dispatch(setDepartStations(depStation));
+        dispatch(setArriveStations(arrStation));
       });
   }, [searchParsed, from, to, departDate, highSpeed, orderType]);
 

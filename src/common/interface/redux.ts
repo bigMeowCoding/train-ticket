@@ -1,4 +1,5 @@
 import { City, HttpReturnCityData } from "./city";
+import { StationType, TicketType, TrainType } from "./ticket";
 
 export type Action<T = any> = {
   type: string;
@@ -28,6 +29,14 @@ export type QueryState = {
   trainList: any[];
   searchParsed: boolean;
   orderType: number;
-  onlyTickets:boolean;
-  isFiltersVisible:boolean;
+  onlyTickets: boolean;
+  isFiltersVisible: boolean;
+  ticketTypes: TicketType[];
+  trainTypes: TrainType[];
+  departStations: StationType[];
+  arriveStations: StationType[];
+  checkedTrainTypes:TrainType[];
+  checkedTicketTypes:TicketType[];
+  checkedDepartStations:StationType[];
+  checkedArriveStations:StationType[];
 };

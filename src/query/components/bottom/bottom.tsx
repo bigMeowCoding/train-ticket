@@ -11,6 +11,7 @@ import {
   toggleIsFiltersVisible,
   toggleOnlyTickets,
 } from "../../redux/action";
+import BottomModal from "../bottom-modal/bottom-modal";
 const Bottom: FC = memo(function () {
   const dispatch = useDispatch();
   const { orderType, highSpeed, onlyTickets, isFiltersVisible } = useSelector(
@@ -74,6 +75,7 @@ const Bottom: FC = memo(function () {
           综合筛选
         </span>
       </div>
+      {isFiltersVisible ? <BottomModal /> : null}
     </div>
   );
 });

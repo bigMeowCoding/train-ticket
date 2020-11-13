@@ -7,10 +7,22 @@ import {
   ACTION_SET_ORDER_TYPE,
   ACTION_SET_SEARCH_PARSED,
   ACTION_SET_TO,
+  ACTION_SET_ARRIVE_STATIONS,
+  ACTION_SET_CHECKED_ARRIVE_STATIONS,
+  ACTION_SET_CHECKED_TRAIN_TYPES,
+  ACTION_SET_DEPART_STATIONS,
+  ACTION_SET_TICKET_TYPES,
+  ACTION_SET_TRAIN_TYPES,
+
 } from "./actionTypes";
 import { ORDER_DEPART, ORDER_DURATION } from "../../common/utils/config";
 import { Dispatch } from "redux";
+import {
+  StationType,
+  TicketType,
+  TrainType,
 
+} from "../../common/interface/ticket";
 export function setFrom(from: string) {
   return {
     type: ACTION_SET_FROM,
@@ -51,5 +63,41 @@ export function toggleIsFiltersVisible(isFiltersVisible: boolean) {
   return {
     type: ACTION_SET_IS_FILTERS_VISIBLE,
     payload: isFiltersVisible,
+  };
+}
+export function setTicketTypes(ticketTypes: TicketType[]) {
+  return {
+    type: ACTION_SET_TICKET_TYPES,
+    payload: ticketTypes,
+  };
+}
+export function setTrainTypes(trainTypes: TrainType[]) {
+  return {
+    type: ACTION_SET_TRAIN_TYPES,
+    payload: trainTypes,
+  };
+}
+export function setCheckedTrainTypes(checkedTrainTypes: TrainType[]) {
+  return {
+    type: ACTION_SET_CHECKED_TRAIN_TYPES,
+    payload: checkedTrainTypes,
+  };
+}
+export function setDepartStations(departStations: StationType[]) {
+  return {
+    type: ACTION_SET_DEPART_STATIONS,
+    payload: departStations,
+  };
+}
+export function setArriveStations(arriveStations: StationType[]) {
+  return {
+    type: ACTION_SET_ARRIVE_STATIONS,
+    payload: arriveStations,
+  };
+}
+export function setCheckedArriveStations(checkedArriveStations: StationType[]) {
+  return {
+    type: ACTION_SET_CHECKED_ARRIVE_STATIONS,
+    payload: checkedArriveStations,
   };
 }
