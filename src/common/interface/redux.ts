@@ -25,6 +25,9 @@ export type QueryState = {
   departDate: number;
   isDateSelectorVisible: boolean;
   highSpeed: boolean;
-  trainList:any[];
+  trainList: any[];
   searchParsed: boolean;
+  orderType: number;
+  onlyTickets:boolean;
+  isFiltersVisible:boolean;
 };

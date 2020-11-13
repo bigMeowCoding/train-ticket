@@ -16,6 +16,7 @@ import Header from "../common/components/header/header";
 import Nav from "../common/components/nav/nav";
 import { setTrainList } from "../index/redux/action";
 import List from "./components/list/list";
+import Bottom from "./components/bottom/bottom";
 
 const App: FC = function () {
   const onBack = useCallback(() => {
@@ -29,6 +30,7 @@ const App: FC = function () {
     searchParsed,
     highSpeed,
     trainList,
+    orderType,
   } = useSelector(
     (state: QueryState) => ({
       from: state.from,
@@ -37,6 +39,7 @@ const App: FC = function () {
       searchParsed: state.searchParsed,
       highSpeed: state.highSpeed,
       trainList: state.trainList,
+      orderType: state.orderType,
     }),
     shallowEqual
   );
@@ -61,6 +64,7 @@ const App: FC = function () {
       .setSearch("to", to)
       .setSearch("date", dayjs(departDate).format("YYYY-MM-DD"))
       .setSearch("highSpeed", "" + highSpeed)
+      .setSearch("orderType", "" + orderType)
       .toString();
     fetch(url)
       .then((res) => res.json())
@@ -74,10 +78,9 @@ const App: FC = function () {
             },
           },
         } = result;
-        console.log(trains);
         dispatch(setTrainList(trains));
       });
-  }, [searchParsed, from, to, departDate, highSpeed]);
+  }, [searchParsed, from, to, departDate, highSpeed, orderType]);
 
   return (
     <div>
@@ -85,6 +88,7 @@ const App: FC = function () {
         <Header title={`${from} ⇀ ${to}`} onBack={onBack} />
         <Nav date={departDate} />
         <List list={trainList} />
+        <Bottom />
       </div>
     </div>
   );
