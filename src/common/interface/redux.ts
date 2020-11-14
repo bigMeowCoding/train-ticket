@@ -3,7 +3,7 @@ import { StationType, TicketType, TrainType } from "./ticket";
 
 export type Action<T = any> = {
   type: string;
-  payload: T;
+  payload?: T;
 };
 export type TicketState = {
   from: string;

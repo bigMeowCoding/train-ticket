@@ -36,6 +36,18 @@ const Slider: FC<{
 
   const [start, setStart] = useState(() => (currentStartHours / 24) * 100);
   const [end, setEnd] = useState(() => (currentEndHours / 24) * 100);
+
+  const prevCurrentStartHours = useRef(currentStartHours);
+  const prevCurrentEndHours = useRef(currentEndHours);
+  if (prevCurrentStartHours.current !== currentStartHours) {
+    setStart((currentStartHours / 24) * 100);
+    prevCurrentStartHours.current = currentStartHours;
+  }
+
+  if (prevCurrentEndHours.current !== currentEndHours) {
+    setEnd((currentEndHours / 24) * 100);
+    prevCurrentEndHours.current = currentEndHours;
+  }
   useEffect(() => {
     rangeWidth.current = parseFloat(
       window.getComputedStyle(range.current).width
@@ -44,7 +56,6 @@ const Slider: FC<{
   function onStartTouchBegin(e: TouchEvent) {
     const touch = e.targetTouches[0];
     (lastStartX as MutableRefObject<any>).current = touch.pageX;
-    console.log("start", lastStartX.current);
   }
 
   function onEndTouchBegin(e: TouchEvent) {
@@ -57,7 +68,6 @@ const Slider: FC<{
     const current: number = lastStartX.current || 0;
     const distance = touch.pageX - current;
     lastStartX.current = touch.pageX;
-    console.log("move", start + (distance / (rangeWidth.current || 0)) * 100);
     setStart((start) => start + (distance / (rangeWidth.current || 0)) * 100);
   }
 
@@ -159,6 +169,15 @@ const Slider: FC<{
   const endText = useMemo(() => {
     return leftPad(endHours, 2, "0") + ":00";
   }, [endHours]);
+
+  useEffect(() => {
+    onStartChanged(startHours);
+  }, [startHours]);
+
+  useEffect(() => {
+    onEndChanged(endHours);
+  }, [endHours]);
+
   return (
     <div className="option">
       <h3>{title}</h3>

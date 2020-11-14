@@ -18,17 +18,13 @@ const Filter: FC<
     <li
       className={classNames({ checked })}
       onClick={() => {
-        const newCheckedMap = [...checkedMap];
-        const findIndex = checkedMap.findIndex((item) => item.value === value);
-        if (findIndex !== -1) {
-          newCheckedMap.splice(findIndex, 1);
-        } else {
-          newCheckedMap.push({
+        update({
+          type: "toggle",
+          payload: {
             name,
             value,
-          });
-        }
-        update(newCheckedMap);
+          },
+        });
       }}
     >
       {name}

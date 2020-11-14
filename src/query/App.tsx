@@ -21,6 +21,7 @@ import Nav from "../common/components/nav/nav";
 import { setTrainList } from "../index/redux/action";
 import List from "./components/list/list";
 import Bottom from "./components/bottom/bottom";
+import { StationType, TicketType, TrainType } from "../common/interface/ticket";
 
 const App: FC = function () {
   const onBack = useCallback(() => {
@@ -35,6 +36,14 @@ const App: FC = function () {
     highSpeed,
     trainList,
     orderType,
+    checkedTicketTypes,
+    checkedTrainTypes,
+    checkedDepartStations,
+    checkedArriveStations,
+    arriveTimeStart,
+    arriveTimeEnd,
+    departTimeEnd,
+    departTimeStart,
   } = useSelector(
     (state: QueryState) => ({
       from: state.from,
@@ -44,6 +53,14 @@ const App: FC = function () {
       highSpeed: state.highSpeed,
       trainList: state.trainList,
       orderType: state.orderType,
+      checkedTicketTypes: state.checkedTicketTypes,
+      checkedTrainTypes: state.checkedTrainTypes,
+      checkedDepartStations: state.checkedDepartStations,
+      checkedArriveStations: state.checkedArriveStations,
+      arriveTimeEnd: state.arriveTimeEnd,
+      arriveTimeStart: state.arriveTimeStart,
+      departTimeEnd: state.departTimeEnd,
+      departTimeStart: state.departTimeStart,
     }),
     shallowEqual
   );
@@ -69,6 +86,26 @@ const App: FC = function () {
       .setSearch("date", dayjs(departDate).format("YYYY-MM-DD"))
       .setSearch("highSpeed", "" + highSpeed)
       .setSearch("orderType", "" + orderType)
+      .setSearch(
+        "checkedTicketTypes",
+        checkedTicketTypes.map((item) => item.value).join()
+      )
+      .setSearch(
+        "checkedTrainTypes",
+        checkedTrainTypes.map((item) => item.value).join()
+      )
+      .setSearch(
+        "checkedDepartStations",
+        checkedDepartStations.map((item) => item.value).join()
+      )
+      .setSearch(
+        "checkedArriveStations",
+        checkedArriveStations.map((item) => item.value).join()
+      )
+      .setSearch("departTimeStart", departTimeStart + "")
+      .setSearch("departTimeEnd", departTimeEnd + "")
+      .setSearch("arriveTimeStart", arriveTimeStart + "")
+      .setSearch("arriveTimeEnd", arriveTimeEnd + "")
       .toString();
     fetch(url)
       .then((res) => res.json())
@@ -89,7 +126,22 @@ const App: FC = function () {
         dispatch(setDepartStations(depStation));
         dispatch(setArriveStations(arrStation));
       });
-  }, [searchParsed, from, to, departDate, highSpeed, orderType]);
+  }, [
+    searchParsed,
+    from,
+    to,
+    departDate,
+    highSpeed,
+    orderType,
+    checkedTrainTypes,
+    checkedTicketTypes,
+    checkedDepartStations,
+    checkedArriveStations,
+    departTimeEnd,
+    departTimeStart,
+    arriveTimeEnd,
+    arriveTimeStart,
+  ]);
 
   return (
     <div>

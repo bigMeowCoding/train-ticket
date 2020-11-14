@@ -17,6 +17,8 @@ import {
   ACTION_SET_ARRIVE_TIME_END,
   ACTION_SET_DEPART_TIME_START,
   ACTION_SET_DEPART_TIME_END,
+  ACTION_SET_CHECKED_TICKET_TYPES,
+  ACTION_SET_CHECKED_DEPART_STATIONS,
 } from "./actionTypes";
 import { ORDER_DEPART, ORDER_DURATION } from "../../common/utils/config";
 import { Dispatch } from "redux";
@@ -73,6 +75,12 @@ export function setTicketTypes(ticketTypes: TicketType[]) {
     payload: ticketTypes,
   };
 }
+export function setCheckedTicketTypes(checkedTicketTypes: TicketType[]) {
+  return {
+    type: ACTION_SET_CHECKED_TICKET_TYPES,
+    payload: checkedTicketTypes,
+  };
+}
 export function setTrainTypes(trainTypes: TrainType[]) {
   return {
     type: ACTION_SET_TRAIN_TYPES,
@@ -89,6 +97,12 @@ export function setDepartStations(departStations: StationType[]) {
   return {
     type: ACTION_SET_DEPART_STATIONS,
     payload: departStations,
+  };
+}
+export function setCheckedDepartStations(checkedDepartStations: StationType[]) {
+  return {
+    type: ACTION_SET_CHECKED_DEPART_STATIONS,
+    payload: checkedDepartStations,
   };
 }
 export function setArriveStations(arriveStations: StationType[]) {

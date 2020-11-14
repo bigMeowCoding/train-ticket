@@ -23,6 +23,7 @@ const Bottom: FC = memo(function () {
     }),
     shallowEqual
   );
+
   return (
     <div className="bottom">
       <div className="bottom-filters">
