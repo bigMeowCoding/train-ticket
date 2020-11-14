@@ -1,19 +1,25 @@
 import React, { useCallback, useEffect } from "react";
 import "./App.css";
-import { connect, shallowEqual, useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import Header from "../common/components/header/header";
 import Nav from "../common/components/nav/nav";
 import URI from "urijs";
 import {
+  setArriveDate,
   setArriveStation,
+  setArriveTimeStr,
   setDepartDate,
   setDepartStation,
+  setDepartTimeStr,
+  setDurationStr,
   setSearchParsed,
+  setTickets,
   setTrainNumber,
 } from "./redux/action";
 import dayjs from "dayjs";
 import removeDateTimes from "../common/utils/remove-date-times";
-import { IndexPageState, TicketState } from "../common/interface/redux";
+import { TicketState } from "../common/interface/redux";
+import Detail from "../common/detail/detail";
 
 function App() {
   const { searchParsed, departDate, trainNumber } = useSelector(
@@ -50,25 +56,25 @@ function App() {
       .setSearch("date", dayjs(departDate).format("YYYY-MM-DD"))
       .setSearch("trainNumber", trainNumber)
       .toString();
-    //
-    // fetch(url)
-    //     .then(response => response.json())
-    //     .then(result => {
-    //       const { detail, candidates } = result;
-    //
-    //       const {
-    //         departTimeStr,
-    //         arriveTimeStr,
-    //         arriveDate,
-    //         durationStr,
-    //       } = detail;
-    //
-    //       dispatch(setDepartTimeStr(departTimeStr));
-    //       dispatch(setArriveTimeStr(arriveTimeStr));
-    //       dispatch(setArriveDate(arriveDate));
-    //       dispatch(setDurationStr(durationStr));
-    //       dispatch(setTickets(candidates));
-    //     });
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((result) => {
+        const { detail, candidates } = result;
+        console.log(detail);
+        const {
+          departTimeStr,
+          arriveTimeStr,
+          arriveDate,
+          durationStr,
+        } = detail;
+
+        dispatch(setDepartTimeStr(departTimeStr));
+        dispatch(setArriveTimeStr(arriveTimeStr));
+        dispatch(setArriveDate(arriveDate));
+        dispatch(setDurationStr(durationStr));
+        dispatch(setTickets(candidates));
+      });
   }, [searchParsed, departDate, trainNumber]);
   return (
     <div className="app">
@@ -78,12 +84,15 @@ function App() {
       <div className="nav-wrapper">
         <Nav date={departDate} />
       </div>
-      <div className="detail-wrapper"></div>
+      <div className="detail-wrapper">
+        <Detail>
+          <span className="left"></span>
+          <span className="schedule">时刻表</span>
+          <span className="right"></span>
+        </Detail>
+      </div>
     </div>
   );
 }
 
-export default connect(
-  function mapStateToProps(state) {},
-  function mapDispatchToProps(dispatch) {}
-)(App);
+export default App;
