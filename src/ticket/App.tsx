@@ -21,7 +21,8 @@ import dayjs from "dayjs";
 import removeDateTimes from "../common/utils/remove-date-times";
 import { TicketState } from "../common/interface/redux";
 import Detail from "../common/detail/detail";
-const Schedule = lazy(() => import("./component/schedule"));
+import Candidate from "./component/candidate/candidate";
+const Schedule = lazy(() => import("./component/schedule/schedule"));
 
 function App() {
   const {
@@ -29,12 +30,14 @@ function App() {
     departDate,
     trainNumber,
     isScheduleVisible,
+    tickets,
   } = useSelector(
     (state: TicketState) => ({
       searchParsed: state.searchParsed,
       departDate: state.departDate,
       trainNumber: state.trainNumber,
       isScheduleVisible: state.isScheduleVisible,
+      tickets: state.tickets,
     }),
     shallowEqual
   );
@@ -106,6 +109,8 @@ function App() {
           <span className="right"></span>
         </Detail>
       </div>
+      <Candidate tickets={tickets} />
+
       {isScheduleVisible && (
         <div
           className="mask"

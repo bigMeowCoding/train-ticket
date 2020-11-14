@@ -56,4 +56,5 @@ export type TicketState = {
   durationStr: string;
   arriveTimeStr: string;
   isScheduleVisible: boolean;
+  tickets: any[];
 };

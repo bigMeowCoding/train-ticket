@@ -5,7 +5,7 @@ import ScheduleRow from "./schedule-row";
 import URI from "urijs";
 import dayjs from "dayjs";
 import { shallowEqual, useSelector } from "react-redux";
-import { TicketState } from "../../common/interface/redux";
+import { TicketState } from "../../../common/interface/redux";
 
 const Schedule: FC = memo(function () {
   const [scheduleList, setScheduleList] = useState([]);

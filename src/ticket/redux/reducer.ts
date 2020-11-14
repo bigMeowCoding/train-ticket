@@ -8,6 +8,7 @@ import {
   ACTION_SET_DURATION_STR,
   ACTION_SET_IS_SCHEDULE_VISIBLE,
   ACTION_SET_SEARCH_PARSED,
+  ACTION_SET_TICKETS,
   ACTION_SET_TRAIN_NUMBER,
 } from "./actionTypes";
 import { Action } from "../../common/interface/redux";
@@ -107,6 +108,16 @@ export default {
     const { type, payload } = action;
     switch (type) {
       case ACTION_SET_IS_SCHEDULE_VISIBLE:
+        return payload;
+      default:
+    }
+
+    return state;
+  },
+  tickets(state = [], action: any) {
+    const { type, payload } = action;
+    switch (type) {
+      case ACTION_SET_TICKETS:
         return payload;
       default:
     }
