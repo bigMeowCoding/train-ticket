@@ -4,6 +4,7 @@ import Option from "./option";
 import { shallowEqual, useSelector } from "react-redux";
 import { QueryState } from "../../../common/interface/redux";
 import classNames from "classnames";
+import Slider from "../../../common/components/slider/slider";
 
 const BottomModal: FC = function () {
   const {
@@ -15,6 +16,10 @@ const BottomModal: FC = function () {
     checkedTicketTypes,
     checkedDepartStations,
     checkedArriveStations,
+    departTimeStart,
+    departTimeEnd,
+    arriveTimeStart,
+    arriveTimeEnd,
   } = useSelector(
     (state: QueryState) => ({
       ticketTypes: state.ticketTypes,
@@ -24,14 +29,18 @@ const BottomModal: FC = function () {
       checkedTrainTypes: state.checkedTrainTypes,
       checkedTicketTypes: state.checkedTicketTypes,
       checkedDepartStations: state.checkedDepartStations,
-      checkedArriveStations: state.checkedArriveStations
+      checkedArriveStations: state.checkedArriveStations,
+      departTimeStart: state.departTimeStart,
+      departTimeEnd: state.departTimeEnd,
+      arriveTimeStart: state.arriveTimeStart,
+      arriveTimeEnd: state.arriveTimeEnd,
     }),
     shallowEqual
   );
   const [localCheckedTicketTypes, setLocalCheckedTicketTypes] = useState([
     ...checkedTicketTypes,
   ]);
-  console.log(checkedTrainTypes)
+  console.log(checkedTrainTypes);
   const [localCheckedTrainTypes, setLocalCheckedTrainTypes] = useState([
     ...checkedTrainTypes,
   ]);
@@ -67,6 +76,14 @@ const BottomModal: FC = function () {
       update: setLocalCheckedArriveStations,
     },
   ];
+  const [localDepartTimeStart, setLocalDepartTimeStart] = useState(
+    departTimeStart
+  );
+  const [localDepartTimeEnd, setLocalDepartTimeEnd] = useState(departTimeEnd);
+  const [localArriveTimeStart, setLocalArriveTimeStart] = useState(
+    arriveTimeStart
+  );
+  const [localArriveTimeEnd, setLocalArriveTimeEnd] = useState(arriveTimeEnd);
   return (
     <div className="bottom-modal">
       <div className="bottom-dialog">
@@ -81,6 +98,20 @@ const BottomModal: FC = function () {
             {optionGroup.map((group) => (
               <Option {...group} key={group.title} />
             ))}
+            <Slider
+              title="出发时间"
+              currentStartHours={localDepartTimeStart}
+              currentEndHours={localDepartTimeEnd}
+              onStartChanged={setLocalDepartTimeStart}
+              onEndChanged={setLocalDepartTimeEnd}
+            />
+            <Slider
+              title="到达时间"
+              currentStartHours={localArriveTimeStart}
+              currentEndHours={localArriveTimeEnd}
+              onStartChanged={setLocalArriveTimeStart}
+              onEndChanged={setLocalArriveTimeEnd}
+            />
           </div>
         </div>
       </div>

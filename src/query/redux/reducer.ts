@@ -1,11 +1,15 @@
 import {
   ACTION_SET_ARRIVE_STATIONS,
+  ACTION_SET_ARRIVE_TIME_END,
+  ACTION_SET_ARRIVE_TIME_START,
   ACTION_SET_CHECKED_ARRIVE_STATIONS,
   ACTION_SET_CHECKED_DEPART_STATIONS,
   ACTION_SET_CHECKED_TICKET_TYPES,
   ACTION_SET_CHECKED_TRAIN_TYPES,
   ACTION_SET_DEPART_DATE,
   ACTION_SET_DEPART_STATIONS,
+  ACTION_SET_DEPART_TIME_END,
+  ACTION_SET_DEPART_TIME_START,
   ACTION_SET_FROM,
   ACTION_SET_HIGH_SPEED,
   ACTION_SET_IS_FILTERS_VISIBLE,
@@ -192,6 +196,46 @@ export default {
     const { type, payload } = action;
     switch (type) {
       case ACTION_SET_CHECKED_ARRIVE_STATIONS:
+        return payload;
+      default:
+    }
+
+    return state;
+  },
+  departTimeStart(state = 0, action: Action<number>) {
+    const { type, payload } = action;
+    switch (type) {
+      case ACTION_SET_DEPART_TIME_START:
+        return payload;
+      default:
+    }
+
+    return state;
+  },
+  departTimeEnd(state = 24, action: Action<number>) {
+    const { type, payload } = action;
+    switch (type) {
+      case ACTION_SET_DEPART_TIME_END:
+        return payload;
+      default:
+    }
+
+    return state;
+  },
+  arriveTimeStart(state = 0, action: Action<number>) {
+    const { type, payload } = action;
+    switch (type) {
+      case ACTION_SET_ARRIVE_TIME_START:
+        return payload;
+      default:
+    }
+
+    return state;
+  },
+  arriveTimeEnd(state = 24, action: Action<number>) {
+    const { type, payload } = action;
+    switch (type) {
+      case ACTION_SET_ARRIVE_TIME_END:
         return payload;
       default:
     }

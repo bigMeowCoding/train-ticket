@@ -17,6 +17,10 @@ export type TicketState = {
   highSpeed: boolean;
 };
 export type QueryState = {
+  arriveTimeEnd: number;
+  arriveTimeStart: number;
+  departTimeEnd: number;
+  departTimeStart: number;
   from: string;
   to: string;
   exchangeFromTo: () => void;

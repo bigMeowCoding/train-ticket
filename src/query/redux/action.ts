@@ -13,7 +13,10 @@ import {
   ACTION_SET_DEPART_STATIONS,
   ACTION_SET_TICKET_TYPES,
   ACTION_SET_TRAIN_TYPES,
-
+  ACTION_SET_ARRIVE_TIME_START,
+  ACTION_SET_ARRIVE_TIME_END,
+  ACTION_SET_DEPART_TIME_START,
+  ACTION_SET_DEPART_TIME_END,
 } from "./actionTypes";
 import { ORDER_DEPART, ORDER_DURATION } from "../../common/utils/config";
 import { Dispatch } from "redux";
@@ -21,7 +24,6 @@ import {
   StationType,
   TicketType,
   TrainType,
-
 } from "../../common/interface/ticket";
 export function setFrom(from: string) {
   return {
@@ -99,5 +101,30 @@ export function setCheckedArriveStations(checkedArriveStations: StationType[]) {
   return {
     type: ACTION_SET_CHECKED_ARRIVE_STATIONS,
     payload: checkedArriveStations,
+  };
+}
+
+export function setDepartTimeStart(departTimeStart: number) {
+  return {
+    type: ACTION_SET_DEPART_TIME_START,
+    payload: departTimeStart,
+  };
+}
+export function setDepartTimeEnd(departTimeEnd: number) {
+  return {
+    type: ACTION_SET_DEPART_TIME_END,
+    payload: departTimeEnd,
+  };
+}
+export function setArriveTimeStart(arriveTimeStart: number) {
+  return {
+    type: ACTION_SET_ARRIVE_TIME_START,
+    payload: arriveTimeStart,
+  };
+}
+export function setArriveTimeEnd(arriveTimeEnd: number) {
+  return {
+    type: ACTION_SET_ARRIVE_TIME_END,
+    payload: arriveTimeEnd,
   };
 }
