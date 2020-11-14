@@ -50,9 +50,10 @@ export type TicketState = {
   arriveStation: string;
   trainNumber: string;
   departDate: number;
-  arriveDate:number;
-  departTimeStr:string;
+  arriveDate: number;
+  departTimeStr: string;
   searchParsed: boolean;
-  durationStr:string;
-  arriveTimeStr:string;
+  durationStr: string;
+  arriveTimeStr: string;
+  isScheduleVisible: boolean;
 };

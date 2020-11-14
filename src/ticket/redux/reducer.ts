@@ -6,6 +6,7 @@ import {
   ACTION_SET_DEPART_STATION,
   ACTION_SET_DEPART_TIME_STR,
   ACTION_SET_DURATION_STR,
+  ACTION_SET_IS_SCHEDULE_VISIBLE,
   ACTION_SET_SEARCH_PARSED,
   ACTION_SET_TRAIN_NUMBER,
 } from "./actionTypes";
@@ -96,6 +97,16 @@ export default {
     const { type, payload } = action;
     switch (type) {
       case ACTION_SET_DURATION_STR:
+        return payload;
+      default:
+    }
+
+    return state;
+  },
+  isScheduleVisible(state = false, action: Action<boolean>) {
+    const { type, payload } = action;
+    switch (type) {
+      case ACTION_SET_IS_SCHEDULE_VISIBLE:
         return payload;
       default:
     }

@@ -5,7 +5,7 @@ import {
   ACTION_SET_DEPART_DATE,
   ACTION_SET_DEPART_STATION,
   ACTION_SET_DEPART_TIME_STR,
-  ACTION_SET_DURATION_STR,
+  ACTION_SET_DURATION_STR, ACTION_SET_IS_SCHEDULE_VISIBLE,
   ACTION_SET_SEARCH_PARSED,
   ACTION_SET_TICKETS,
   ACTION_SET_TRAIN_NUMBER,
@@ -70,5 +70,11 @@ export function setTickets(tickets: any) {
   return {
     type: ACTION_SET_TICKETS,
     payload: tickets,
+  };
+}
+export function setIsScheduleVisible(isScheduleVisible:boolean) {
+  return {
+    type: ACTION_SET_IS_SCHEDULE_VISIBLE,
+    payload: isScheduleVisible,
   };
 }

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { lazy, Suspense, useCallback, useEffect } from "react";
 import "./App.css";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import Header from "../common/components/header/header";
@@ -12,6 +12,7 @@ import {
   setDepartStation,
   setDepartTimeStr,
   setDurationStr,
+  setIsScheduleVisible,
   setSearchParsed,
   setTickets,
   setTrainNumber,
@@ -20,13 +21,20 @@ import dayjs from "dayjs";
 import removeDateTimes from "../common/utils/remove-date-times";
 import { TicketState } from "../common/interface/redux";
 import Detail from "../common/detail/detail";
+const Schedule = lazy(() => import("./component/schedule"));
 
 function App() {
-  const { searchParsed, departDate, trainNumber } = useSelector(
+  const {
+    searchParsed,
+    departDate,
+    trainNumber,
+    isScheduleVisible,
+  } = useSelector(
     (state: TicketState) => ({
       searchParsed: state.searchParsed,
       departDate: state.departDate,
       trainNumber: state.trainNumber,
+      isScheduleVisible: state.isScheduleVisible,
     }),
     shallowEqual
   );
@@ -87,10 +95,29 @@ function App() {
       <div className="detail-wrapper">
         <Detail>
           <span className="left"></span>
-          <span className="schedule">时刻表</span>
+          <span
+            className="schedule"
+            onClick={() => {
+              dispatch(setIsScheduleVisible(!isScheduleVisible));
+            }}
+          >
+            时刻表
+          </span>{" "}
           <span className="right"></span>
         </Detail>
       </div>
+      {isScheduleVisible && (
+        <div
+          className="mask"
+          onClick={() => {
+            dispatch(setIsScheduleVisible(!isScheduleVisible));
+          }}
+        >
+          <Suspense fallback={<div>loading</div>}>
+            <Schedule />
+          </Suspense>
+        </div>
+      )}
     </div>
   );
 }
