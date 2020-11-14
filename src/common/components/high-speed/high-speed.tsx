@@ -3,10 +3,10 @@ import React from "react";
 import { FC } from "react";
 import classNames from "classnames";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { TicketState } from "../../interface/redux";
+import { IndexPageState } from "../../interface/redux";
 import { toggleHighSpeed } from "../../../index/redux/action";
 const HighSpeed: FC = function () {
-  const { highSpeed } = useSelector((state: TicketState) => {
+  const { highSpeed } = useSelector((state: IndexPageState) => {
     return {
       highSpeed: state.highSpeed,
     };

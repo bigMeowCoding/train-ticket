@@ -1,7 +1,7 @@
 import "./city-selector.scss";
 import React, { FC, useEffect, useMemo, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { TicketState } from "../../interface/redux";
+import { IndexPageState } from "../../interface/redux";
 import classnames from "classnames";
 import { fetchCityData, hideCitySelector } from "../../../index/redux/action";
 import CityList from "./city-list";
@@ -9,7 +9,7 @@ import Suggest from "./suggest";
 
 const CitySelector: FC<{ onBack: () => void }> = function ({ onBack }) {
   const { isCitySelectorVisible, isLoadingCityData, cityData } = useSelector(
-    (state: TicketState) => {
+    (state: IndexPageState) => {
       return {
         isCitySelectorVisible: state.isCitySelectorVisible,
         cityData: state.cityData,

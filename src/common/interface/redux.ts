@@ -5,7 +5,7 @@ export type Action<T = any> = {
   type: string;
   payload?: T;
 };
-export type TicketState = {
+export type IndexPageState = {
   from: string;
   to: string;
   exchangeFromTo: () => void;
@@ -39,8 +39,16 @@ export type QueryState = {
   trainTypes: TrainType[];
   departStations: StationType[];
   arriveStations: StationType[];
-  checkedTrainTypes:TrainType[];
-  checkedTicketTypes:TicketType[];
-  checkedDepartStations:StationType[];
-  checkedArriveStations:StationType[];
+  checkedTrainTypes: TrainType[];
+  checkedTicketTypes: TicketType[];
+  checkedDepartStations: StationType[];
+  checkedArriveStations: StationType[];
+};
+
+export type TicketState = {
+  departStation: string;
+  arriveStation: string;
+  trainNumber: string;
+  departDate: number;
+  searchParsed: boolean;
 };

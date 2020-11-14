@@ -3,12 +3,12 @@ import "./depart-date.scss";
 import { FC, useMemo } from "react";
 import React from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { TicketState } from "../../../common/interface/redux";
+import { IndexPageState } from "../../../common/interface/redux";
 import removeDateTimes from "../../../common/utils/remove-date-times";
 import { showDateSelector } from "../../redux/action";
 const DepartDate: FC = function () {
   const { time } = useSelector(
-    (state: TicketState) => ({
+    (state: IndexPageState) => ({
       time: state.departDate,
     }),
     shallowEqual

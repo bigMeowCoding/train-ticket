@@ -4,7 +4,7 @@ import { connect, shallowEqual, useDispatch, useSelector } from "react-redux";
 import Header from "../common/components/header/header";
 import Journey from "./components/journey/journey";
 import { exchangeFromTo } from "./redux/action";
-import { TicketState } from "../common/interface/redux";
+import { IndexPageState } from "../common/interface/redux";
 import CitySelector from "../common/components/city-selector/city-selector";
 import DepartDate from "./components/depart-date/depart-date";
 import DateSelector from "../common/components/date-selector/date-selector";
@@ -17,7 +17,7 @@ const App: FC = () => {
   }, []);
 
   const { from, to } = useSelector(
-    (state: TicketState) => ({
+    (state: IndexPageState) => ({
       from: state.from,
       to: state.to,
     }),

@@ -3,13 +3,13 @@ import React, { FC } from "react";
 import classNames from "classnames";
 import Header from "../header/header";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { TicketState } from "../../interface/redux";
+import { IndexPageState } from "../../interface/redux";
 import { hideDateSelector } from "../../../index/redux/action";
 import Month from "./month";
 
 const DateSelector: FC<{ onBack: () => void }> = function ({ onBack }) {
   const { show } = useSelector(
-    (state: TicketState) => ({
+    (state: IndexPageState) => ({
       show: state.isDateSelectorVisible,
     }),
     shallowEqual
