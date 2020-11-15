@@ -123,76 +123,8 @@ export function fetchInitial(url: string) {
   };
 }
 
-let passengerIdSeed = 0;
 
-export function createAdult() {
-  return (dispatch: Dispatch, getState: any) => {
-    const { passengers } = getState();
 
-    for (let passenger of passengers) {
-      const keys = Object.keys(passenger);
-      for (let key of keys) {
-        if (!passenger[key]) {
-          return;
-        }
-      }
-    }
-
-    dispatch(
-      setPassengers([
-        ...passengers,
-        {
-          id: ++passengerIdSeed,
-          name: "",
-          ticketType: "adult",
-          licenceNo: "",
-          seat: "Z",
-        },
-      ])
-    );
-  };
-}
-
-export function createChild() {
-  return (dispatch: Dispatch, getState: any) => {
-    const { passengers } = getState();
-
-    let adultFound = null;
-
-    for (let passenger of passengers) {
-      const keys = Object.keys(passenger);
-      for (let key of keys) {
-        if (!passenger[key]) {
-          return;
-        }
-      }
-
-      if (passenger.ticketType === "adult") {
-        adultFound = passenger.id;
-      }
-    }
-
-    if (!adultFound) {
-      alert("请至少正确添加一个同行成人");
-      return;
-    }
-
-    dispatch(
-      setPassengers([
-        ...passengers,
-        {
-          id: ++passengerIdSeed,
-          name: "",
-          gender: "none",
-          birthday: "",
-          followAdult: adultFound,
-          ticketType: "child",
-          seat: "Z",
-        },
-      ])
-    );
-  };
-}
 
 export function removePassenger(id) {
   return (dispatch: Dispatch, getState: any) => {
@@ -206,7 +138,147 @@ export function removePassenger(id) {
   };
 }
 
-export function updatePassenger(id, data, keysToBeRemoved = []) {
+
+export function showMenu(menu) {
+  return (dispatch: any) => {
+    dispatch(setMenu(menu));
+    dispatch(setIsMenuVisible(true));
+  };
+}
+export function showGenderMenu(id) {
+  return (dispatch, getState) => {
+    const { passengers } = getState();
+    const passenger = passengers.find(passenger => passenger.id === id);
+
+    if (!passenger) {
+      return;
+    }
+
+    dispatch(
+        showMenu({
+          onPress(gender) {
+            dispatch(updatePassenger(id, { gender }));
+            dispatch(hideMenu());
+          },
+          options: [
+            {
+              title: '男',
+              value: 'male',
+              active: 'male' === passenger.gender,
+            },
+            {
+              title: '女',
+              value: 'female',
+              active: 'female' === passenger.gender,
+            },
+          ],
+        })
+    );
+  };
+}
+
+export function showFollowAdultMenu(id) {
+  return (dispatch, getState) => {
+    const { passengers } = getState();
+
+    const passenger = passengers.find(passenger => passenger.id === id);
+
+    if (!passenger) {
+      return;
+    }
+
+    dispatch(
+        showMenu({
+          onPress(followAdult) {
+            dispatch(updatePassenger(id, { followAdult }));
+            dispatch(hideMenu());
+          },
+          options: passengers
+              .filter(passenger => passenger.ticketType === 'adult')
+              .map(adult => {
+                return {
+                  title: adult.name,
+                  value: adult.id,
+                  active: adult.id === passenger.followAdult,
+                };
+              }),
+        })
+    );
+  };
+}
+
+export function showTicketTypeMenu(id) {
+  return (dispatch, getState) => {
+    const { passengers } = getState();
+
+    const passenger = passengers.find(passenger => passenger.id === id);
+
+    if (!passenger) {
+      return;
+    }
+
+    dispatch(
+        showMenu({
+          onPress(ticketType) {
+            if ('adult' === ticketType) {
+              dispatch(
+                  updatePassenger(
+                      id,
+                      {
+                        ticketType,
+                        licenceNo: '',
+                      },
+                      ['gender', 'followAdult', 'birthday']
+                  )
+              );
+            } else {
+              const adult = passengers.find(
+                  passenger =>
+                      passenger.id === id &&
+                      passenger.ticketType === 'adult'
+              );
+
+              if (adult) {
+                dispatch(
+                    updatePassenger(
+                        id,
+                        {
+                          ticketType,
+                          gender: '',
+                          followAdult: adult.id,
+                          birthday: '',
+                        },
+                        ['licenceNo']
+                    )
+                );
+              } else {
+                alert('没有其他成人乘客');
+              }
+            }
+
+            dispatch(hideMenu());
+          },
+          options: [
+            {
+              title: '成人票',
+              value: 'adult',
+              active: 'adult' === passenger.ticketType,
+            },
+            {
+              title: '儿童票',
+              value: 'child',
+              active: 'child' === passenger.ticketType,
+            },
+          ],
+        })
+    );
+  };
+}
+export function hideMenu() {
+  return setIsMenuVisible(false);
+}
+
+ export function updatePassenger(id, data, keysToBeRemoved = []) {
   return (dispatch, getState) => {
     const { passengers } = getState();
 
@@ -227,13 +299,3 @@ export function updatePassenger(id, data, keysToBeRemoved = []) {
   };
 }
 
-export function showMenu(menu) {
-  return (dispatch: any) => {
-    dispatch(setMenu(menu));
-    dispatch(setIsMenuVisible(true));
-  };
-}
-
-export function hideMenu() {
-  return setIsMenuVisible(false);
-}

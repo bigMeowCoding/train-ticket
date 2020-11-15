@@ -16,34 +16,32 @@ import {
 } from "./redux/action";
 import dayjs from "dayjs";
 import { OrderState, TicketState } from "../common/interface/redux";
-import { ACTION_SET_SEARCH_PARSED } from "./redux/actionTypes";
+import Ticket from "./component/ticket/ticket";
+import Passengers from "./component/passenger/passengers";
+import Menu from "./component/menu/menu";
+import Choose from "./component/choose/choose";
+import Account from "./component/account/account";
 
 function App() {
   const { onBack } = useOnBack();
   const dispatch = useDispatch();
   const {
     departDate,
-    trainNumber,
-    arriveDate,
     departStation,
-    departTimeStr,
-    durationStr,
     arriveStation,
-    arriveTimeStr,
     searchParsed,
     seatType,
+    price,
+    isMenuVisible,
   } = useSelector(
     (state: OrderState) => ({
       departStation: state.departStation,
       departDate: state.departDate,
-      trainNumber: state.trainNumber,
-      arriveDate: state.arriveDate,
-      departTimeStr: state.departTimeStr,
-      durationStr: state.durationStr,
       arriveStation: state.arriveStation,
-      arriveTimeStr: state.arriveTimeStr,
       searchParsed: state.searchParsed,
       seatType: state.seatType,
+      price: state.price,
+      isMenuVisible: state.isMenuVisible,
     }),
     shallowEqual
   );
@@ -82,11 +80,13 @@ function App() {
           <span style={{ display: "block" }} className="train-icon"></span>
         </Detail>
       </div>
+      <Ticket price={price} type={seatType} />
+      <Passengers />
+      <Choose />
+      <Account/>
+      <Menu show={isMenuVisible} />
     </div>
   );
 }
 
-export default connect(
-  function mapStateToProps(state) {},
-  function mapDispatchToProps(dispatch) {}
-)(App);
+export default App;

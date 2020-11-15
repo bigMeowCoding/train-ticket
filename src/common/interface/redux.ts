@@ -1,5 +1,7 @@
 import { City, HttpReturnCityData } from "./city";
 import { StationType, TicketType, TrainType } from "./ticket";
+import { Passenger } from "./passenger";
+import { MenuI } from "./menu";
 
 export type Action<T = any> = {
   type: string;
@@ -70,5 +72,9 @@ export type OrderState = {
   arriveTimeStr: string;
   isScheduleVisible: boolean;
   tickets: any[];
-  seatType:string;
+  seatType: string;
+  price: number;
+  passengers: Passenger[];
+  menu: MenuI;
+  isMenuVisible:boolean;
 };
