@@ -15,12 +15,8 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { OrderState } from "../../../common/interface/redux";
 import "./passegers.scss";
 
-const PassengerInfo: FC<Passenger> = memo(function ({
-  id,
-  name,
-  ticketType,
-  ...props
-}) {
+const PassengerInfo: FC<Passenger> = memo(function (passenger) {
+  const { id, name, ticketType } = passenger;
   const isAdult = ticketType === "adult";
   const dispatch = useDispatch();
   const { passengers } = useSelector(
@@ -94,7 +90,7 @@ const PassengerInfo: FC<Passenger> = memo(function ({
               type="text"
               className="input licenceNo"
               placeholder="证件号码"
-              value={(props as AdultPassenger).licenceNo}
+              value={(passenger as AdultPassenger).licenceNo}
               onChange={(e) => onUpdate(id, { licenceNo: e.target.value })}
             />
           </li>
@@ -110,9 +106,9 @@ const PassengerInfo: FC<Passenger> = memo(function ({
                 dispatch(showGenderMenu(id));
               }}
               value={
-                (props as ChildPassenger).gender === "male"
+                (passenger as ChildPassenger).gender === "male"
                   ? "男"
-                  : (props as ChildPassenger).gender === "female"
+                  : (passenger as ChildPassenger).gender === "female"
                   ? "女"
                   : ""
               }
@@ -127,7 +123,7 @@ const PassengerInfo: FC<Passenger> = memo(function ({
               type="text"
               className="input birthday"
               placeholder="如 19951015"
-              value={(props as ChildPassenger).birthday}
+              value={(passenger as ChildPassenger).birthday}
               onChange={(e) => onUpdate(id, { birthday: e.target.value })}
             />
           </li>
@@ -142,7 +138,7 @@ const PassengerInfo: FC<Passenger> = memo(function ({
               }}
               className="input followAdult"
               placeholder="请选择"
-              value={nameMap[(props as ChildPassenger).followAdult]}
+              value={nameMap[(passenger as ChildPassenger).followAdult]}
               readOnly
             />
           </li>
