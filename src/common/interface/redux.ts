@@ -58,3 +58,17 @@ export type TicketState = {
   isScheduleVisible: boolean;
   tickets: any[];
 };
+export type OrderState = {
+  departStation: string;
+  arriveStation: string;
+  trainNumber: string;
+  departDate: number;
+  arriveDate: number;
+  departTimeStr: string;
+  searchParsed: boolean;
+  durationStr: string;
+  arriveTimeStr: string;
+  isScheduleVisible: boolean;
+  tickets: any[];
+  seatType:string;
+};
